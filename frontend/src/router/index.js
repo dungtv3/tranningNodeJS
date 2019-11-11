@@ -11,6 +11,7 @@ const router = new VueRouter({
     { path: '/', name: 'home', component: require('@/pages/home.vue').default },
     { path: '/create', name: 'create', component: require('@/pages/addEmployee.vue').default },
     { path: '/edit/:id', name: 'edit', component: require('@/pages/editEmployee.vue').default },
+    { path : '/chat', name : 'chat', component: require('@/pages/chatSocket.vue').default }
   ]
 });
 

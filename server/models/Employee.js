@@ -1,6 +1,6 @@
 const moogoose = require('mongoose');
 
-var EmployeeSchema = new moogoose.Schema({
+const EmployeeSchema = new moogoose.Schema({
   name: String,
   age: {
     type : Number,

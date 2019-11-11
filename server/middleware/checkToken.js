@@ -5,7 +5,6 @@ let checkToken = (req,res, next) => {
 
   if(token) {
     jwt.verify(token, process.env.JWT_SECRET, (err,decoded) => {
-      console.log(decoded);
       if (err) {
         return res.json({
           status: false,

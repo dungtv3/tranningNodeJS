@@ -10,7 +10,6 @@ var createToken = (user) => {
 }
 const UserRoute  = (router) => {
 
-
   router.post('/register',async (req,res) => {
     const { username,password } = req.body;
     const user = await User.create({
@@ -49,6 +48,7 @@ const UserRoute  = (router) => {
         status : true,
         message : 'Login success',
         token : token,
+        users : users['username']
       });
   });
 }

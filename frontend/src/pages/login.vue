@@ -46,7 +46,7 @@ Vue.component(HasError.name, HasError)
 Vue.component(AlertError.name, AlertError)
 import setHeaderToken from '@/setHeaderToken.js'
 export default {
-  name: "",
+  name: "Login",
   data(){
       return {
         form : new Form({
@@ -60,9 +60,14 @@ export default {
     submitForm() {
         this.form.post('http://127.0.0.2:3000/login').then((response) => {
             if(response.data.status){
+              this.$store.dispatch('saveToken',{
+                  token : response.data.token,
+                  user  : response.data.users
+              });
               localStorage.setItem('token', response.data.token);
               setHeaderToken(response.data.token);
               this.$router.push({name : 'home'});
+              this.$socket.emit('register-user',response.data.users);
             }else{
               this.errors = response.data.message
             }
